@@ -11,9 +11,9 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class PanelEditarRestaurante extends JPanel
 {
-    /**
-     * El campo para que el usuario ingrese el nombre del restaurante
-     */
+    //nombre de resturante
+	
+	
     private JTextField txtNombre;
 
     /**
@@ -28,6 +28,31 @@ public class PanelEditarRestaurante extends JPanel
 
     public PanelEditarRestaurante( )
     {
+        
+        // Configurar el layout
+        setLayout(new GridLayout(3, 2));
+            
+        // Crear campo para el nombre con etiqueta
+        JLabel lblNombre = new JLabel("Nombre del restaurante:");
+        txtNombre = new JTextField();
+        add(lblNombre);
+        add(txtNombre);
+
+        // Crear selector para la calificación
+        JLabel lblCalificacion = new JLabel("Calificación:");
+        String[] calificaciones = {"1", "2", "3", "4", "5"};
+        cbbCalificacion = new JComboBox<>(calificaciones);
+        add(lblCalificacion);
+        add(cbbCalificacion);
+
+        // Crear selector para indicar si ya ha sido visitado
+        JLabel lblVisitado = new JLabel("¿Ya visitado?");
+        String[] opcionesVisitado = {"Sí", "No"};
+        cbbVisitado = new JComboBox<>(opcionesVisitado);
+        add(lblVisitado);
+        add(cbbVisitado);
+    
+
         // Crea el campo para el nombre con una etiqueta al frente
         // TODO completar
 
@@ -49,7 +74,8 @@ public class PanelEditarRestaurante extends JPanel
     public boolean getVisitado( )
     {
         // TODO completar
-        return false;
+        String seleccion = (String) cbbVisitado.getSelectedItem();
+        return "Sí".equals(seleccion);
     }
 
     /**
@@ -69,6 +95,6 @@ public class PanelEditarRestaurante extends JPanel
     public String getNombre( )
     {
         // TODO completar
-        return "";
+        return txtNombre.getText();
     }
 }
